@@ -71,6 +71,6 @@ public class App {
 
         AccountController.print(teacherService.getAll());
 
-        System.out.println(AccountController.averageAge(listOfTeachers));
+        System.out.println(AccountController.averageAge(teacherService.getAll()));
     }
 }
