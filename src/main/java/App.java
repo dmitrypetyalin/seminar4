@@ -70,5 +70,7 @@ public class App {
         teacherService.sortByFIO();
 
         AccountController.print(teacherService.getAll());
+
+        System.out.println(AccountController.averageAge(listOfTeachers));
     }
 }
