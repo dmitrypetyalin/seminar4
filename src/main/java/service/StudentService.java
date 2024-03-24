@@ -10,28 +10,28 @@ import java.util.List;
  * @author PetSoft
  * @date 24.03.2024 12:38
  */
-public class StudentService implements iPersonService<Student> {
+public class StudentService implements iPersonService<Student<String, Integer>> {
     private int count;
-    private List<Student> students;
+    private List<Student<String, Integer>> students;
 
     public StudentService() {
         this.students = new ArrayList<>();
     }
 
     @Override
-    public List<Student> getAll() {
+    public List<Student<String, Integer>> getAll() {
         return this.students;
     }
 
     @Override
     public void create(String name, int age) {
-        Student stud = new Student(name, age);
+        Student<String, Integer> stud = new Student<>(name, age);
         students.add(stud);
         count++;
     }
 
     public void sortByFIO() {
-        PersonComparator<Student> persComp = new PersonComparator<>();
+        PersonComparator<Student<String, Integer>> persComp = new PersonComparator<>();
         students.sort(persComp);
     }
 

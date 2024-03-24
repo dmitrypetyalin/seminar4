@@ -1,6 +1,7 @@
 package controller;
 
 import domain.Person;
+import domain.Teacher;
 import domain.Worker;
 
 import java.util.List;
@@ -10,22 +11,22 @@ import java.util.List;
  * @date 24.03.2024 12:12
  */
 public class AccountController {
-    public static <V extends Person> void print(List<V> group) {
+    public static <V extends Person<String, Integer>> void print(List<V> group) {
         for (V s : group) {
             System.out.println(s);
         }
     }
 
-    public static <T extends Worker> void paySalary(T person, int salary) {
+    public static <T extends Worker<String, Integer>> void paySalary(T person, int salary) {
         System.out.println(person.getName() + " выплачено зарплата " + salary + "р. ");
     }
 
     //Загатовка для метода averageAge
-    public static <T extends Person> double averageAge(List<T> persons) {
+    public static <T extends Person<String, Integer>> double averageAge(List<T> persons) {
         double avgAge = 0;
         int size = persons.size();
         for (T person : persons) {
-            avgAge += person.getAge();
+            avgAge += (int) person.getAge();
         }
         return avgAge / size;
     }

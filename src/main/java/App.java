@@ -13,14 +13,14 @@ import java.util.List;
  */
 public class App {
     public static void main(String[] args) {
-        Student s1 = new Student("Иван", 25);
-        Student s2 = new Student("Игорь", 23);
-        Student s3 = new Student("Иван", 22);
-        Student s4 = new Student("Игорь", 23);
-        Student s5 = new Student("Даша", 23);
-        Student s6 = new Student("Лена", 23);
+        Student<String, Integer> s1 = new Student<>("Иван", 25);
+        Student<String, Integer> s2 = new Student<>("Игорь", 23);
+        Student<String, Integer> s3 = new Student<>("Иван", 22);
+        Student<String, Integer> s4 = new Student<>("Игорь", 23);
+        Student<String, Integer> s5 = new Student<>("Даша", 23);
+        Student<String, Integer> s6 = new Student<>("Лена", 23);
 
-        List<Student> listStud = new ArrayList<>();
+        List<Student<String, Integer>> listStud = new ArrayList<>();
         listStud.add(s1);
         listStud.add(s2);
         listStud.add(s3);
@@ -31,7 +31,7 @@ public class App {
         StudentGroup group4580 = new StudentGroup(listStud, 4580);
 
         StudentService studServ = new StudentService();
-        for (Student student : listStud) {
+        for (Student<String, Integer> student : listStud) {
             studServ.create(student.getName(), student.getAge());
         }
 
@@ -43,10 +43,10 @@ public class App {
 
         AccountController.print(studServ.getAll());
 
-        Teacher t1 = new Teacher("Галина", 55, "Docent");
-        Employee e1 = new Employee("Татьяна", 57, "Slesar");
+        Teacher<String, Integer> t1 = new Teacher<>("Галина", 55, "Docent");
+        Employee<String, Integer> e1 = new Employee<>("Татьяна", 57, "Slesar");
 
-        System.out.println(new PersonComparator<Student>().compare(s1, s3));
+        System.out.println(new PersonComparator<Student<String, Integer>>().compare(s1, s3));
 
 //        AccountController.paySalary(s1, 50000);
         AccountController.paySalary(t1, 50000);
@@ -56,13 +56,13 @@ public class App {
 
         System.out.println("=========================================================");
 
-        List<Teacher> listOfTeachers = new ArrayList<>(Arrays.asList(new Teacher("Linda", 34, "docent"),
-                new Teacher("Gram", 44, "PHD"),
-                new Teacher("Donald", 48, "PHD")));
+        List<Teacher<String, Integer>> listOfTeachers = new ArrayList<>(Arrays.asList(new Teacher<>("Linda", 34, "docent"),
+                new Teacher<>("Gram", 44, "PHD"),
+                new Teacher<>("Donald", 48, "PHD")));
 
         TeacherService teacherService = new TeacherService();
 
-        for (Teacher teacher : listOfTeachers)
+        for (Teacher<String, Integer> teacher : listOfTeachers)
             teacherService.create(teacher.getName(), teacher.getAge());
 
         AccountController.print(teacherService.getAll());
