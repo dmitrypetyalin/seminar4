@@ -20,19 +20,18 @@ public class EmployeeService implements iPersonService<Employee> {
 
     @Override
     public List<Employee> getAll() {
-        return employees;
+        return this.employees;
     }
 
     @Override
     public void create(String name, int age) {
-        Employee epls = new Employee(name, age, "basic");
+        Employee employee = new Employee(name, age, "basic");
+        employees.add(employee);
         count++;
-        employees.add(epls);
     }
 
-    public void sortByFIO()
-    {
-        PersonComparator<Employee> persComp = new PersonComparator<Employee>();
+    public void sortByFIO() {
+        PersonComparator<Employee> persComp = new PersonComparator<>();
         employees.sort(persComp);
     }
 

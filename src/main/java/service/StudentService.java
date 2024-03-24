@@ -20,19 +20,18 @@ public class StudentService implements iPersonService<Student> {
 
     @Override
     public List<Student> getAll() {
-        return students;
+        return this.students;
     }
 
     @Override
     public void create(String name, int age) {
         Student stud = new Student(name, age);
-        count++;
         students.add(stud);
+        count++;
     }
 
-    public void sortByFIO()
-    {
-        PersonComparator<Student> persComp = new PersonComparator<Student>();
+    public void sortByFIO() {
+        PersonComparator<Student> persComp = new PersonComparator<>();
         students.sort(persComp);
     }
 
